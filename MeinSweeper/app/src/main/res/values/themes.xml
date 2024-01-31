@@ -2,8 +2,25 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MeinSweeper" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:background">@color/background</item>
+        <item name="android:color">@color/white</item>
+        <item name="android:textSize">20sp</item>
+
+    </style>
+
+    <style name="AlertDialogTitle" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:textSize">24sp</item>
+        <item name="android:background">@color/backgroundDark</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="AlertDialogContent" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:background">@color/backgroundDark</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="Theme.MeinSweeper" parent="Base.Theme.MeinSweeper" />
+
 </resources>

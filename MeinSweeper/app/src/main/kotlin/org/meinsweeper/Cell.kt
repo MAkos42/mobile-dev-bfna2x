@@ -1,8 +1,8 @@
 package org.meinsweeper
 
-class Cell(var x: Int, var y: Int) {
+class Cell(var row: Int, var col: Int) {
     var hasMine : Boolean = false
     var isFlagged : Boolean = false
     var isExposed : Boolean = false
-    var neighbouringMines : Int = -1
+    var adjacentMines : Int = -1
 }

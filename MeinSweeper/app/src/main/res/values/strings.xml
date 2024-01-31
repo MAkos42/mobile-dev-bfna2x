@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">MeinSweeper</string>
+    <string name="app_name">Mein Sweeper</string>
+    <string name="mine">MINE</string>
+    <string name="time">TIME</string>
+    <string name="zeroCount">000</string>
+    <string name="expert">Expert</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="easy">Easy</string>
+    <string name="new_game">New Game</string>
+    <string name="mein_sweeper">Mein Sweeper</string>
+    <string name="victory">Victory!</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="menu">Menu</string>
+    <string name="endText">Grid size: %dx%d\nMine count: %d:%02d\nTime: %d</string>
+    <string name="ok">OK</string>
+    <string name="helpText">Reveal every empty cell to win!\n\nTap -> Reveal tile\nHold -> Flag tile\nHold on a revealed tile -> Reveal adjacent tiles\n\nTap on the mine button to start a new game!\nTap and hold on the mine button to return to the start page!\n\nOn harder difficulties you can drag the screen to scroll!</string>
+    <string name="help">Help</string>
+    <string name="qmark">\?</string>
 </resources>
