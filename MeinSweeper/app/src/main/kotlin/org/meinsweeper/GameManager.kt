@@ -8,39 +8,32 @@ class GameManager(val rows: Int, val cols: Int, val mineCount: Int) {
     var gameGrid: Array<Array<Cell?>> = Array(rows) {arrayOfNulls(cols) }
     var remainingCells: MutableList<Cell> = mutableListOf<Cell>()
 
-    fun startGame(){
+    fun startGame() {
         remainingCells.clear()
         mineDisplayCount = mineCount
         isFirstRound = true
 
         for (row in 0 until rows) {
-            for(col in 0 until cols){
-                gameGrid[row][col] = Cell(row,col)
+            for (col in 0 until cols) {
+                gameGrid[row][col] = Cell(row, col)
                 remainingCells.add(gameGrid[row][col]!!)
             }
         }
 
         val rand = Random
-        for (i in 0 until mineCount){
+        for (i in 0 until mineCount) {
             placeMine(rand)
         }
-        for (row in 0 until rows) {
-            for(col in 0 until cols){
-                calcAdjacentMines(gameGrid[row][col]!!)
-            }
-        }
+
+        calcAdjacentMines()
     }
 
-    fun firstClickMine(cell:Cell){
+    fun firstClickMine(cell:Cell) {
         placeMine(Random)
         cell.hasMine = false
         remainingCells.add(cell)
 
-        for (row in 0 until rows) {
-            for(col in 0 until cols){
-                calcAdjacentMines(gameGrid[row][col]!!)
-            }
-        }
+        calcAdjacentMines()
 
     }
 
@@ -52,29 +45,33 @@ class GameManager(val rows: Int, val cols: Int, val mineCount: Int) {
             if (!gameGrid[row][col]!!.hasMine){
                 gameGrid[row][col]!!.hasMine = true
                 remainingCells.remove(gameGrid[row][col])
-                break
+                return
             }
         }
     }
 
-    private fun calcAdjacentMines(cell: Cell){
-        if (cell.hasMine){
-            return
-        }
-        val row = cell.row
-        val col = cell.col
-        var value = 0
+    private fun calcAdjacentMines(){
+        gameGrid.flatten().forEach {
+            val cell = it!!
 
-        for( i in row-1..row+1){
-            for (j in col-1 .. col+1)
-                if (i in 0 until rows && j in 0 until cols){
-                    if(gameGrid[i][j]!!.hasMine){
-                        value++
+            if (cell.hasMine) {
+                return
+            }
+            val row = cell.row
+            val col = cell.col
+            var value = 0
+
+            for (i in row - 1..row + 1) {
+                for (j in col - 1..col + 1)
+                    if (i in 0 until rows && j in 0 until cols) {
+                        if (gameGrid[i][j]!!.hasMine) {
+                            value++
+                        }
                     }
-                }
-        }
+            }
 
-        cell.adjacentMines = value
+            cell.adjacentMines = value
+        }
     }
 
     fun allMinesFlagged(cell: Cell): Boolean{

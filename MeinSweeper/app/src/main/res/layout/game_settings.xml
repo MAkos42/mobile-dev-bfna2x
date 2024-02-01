@@ -64,7 +64,7 @@
         <Button
             android:id="@+id/easyStart"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginBottom="32dp"
             android:onClick="newGameEasy"
             android:text="@string/easy"
@@ -76,7 +76,7 @@
         <Button
             android:id="@+id/InterStart"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginBottom="100dp"
             android:onClick="newGameMed"
             android:text="@string/intermediate"
@@ -89,7 +89,7 @@
         <Button
             android:id="@+id/expertStart"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginTop="32dp"
             android:onClick="newGameExpert"
             android:text="@string/expert"

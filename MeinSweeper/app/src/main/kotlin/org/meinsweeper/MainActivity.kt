@@ -1,6 +1,5 @@
 package org.meinsweeper
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.ContextThemeWrapper
@@ -25,10 +24,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var updateTimer : Runnable
     private lateinit var timer : TextView
 
-    private val executor = Executors.newSingleThreadScheduledExecutor()
+    private val executor = Executors.newSingleThreadScheduledExecutor() //async timer
     private var gameTime : Int = -1
 
-    private val cellImageArray : Array<Int> = arrayOf(
+    private val cellImageArray : Array<Int> = arrayOf( //image array indexable by Cell.mineCount
         R.drawable.none,
         R.drawable.one,
         R.drawable.two,
@@ -52,9 +51,7 @@ class MainActivity : AppCompatActivity() {
         mineCounter = findViewById(R.id.mineCounter)
         timer = findViewById(R.id.timer)
 
-
         updateTimer = Runnable {
-            // Update the timer TextView with the elapsed seconds
             runOnUiThread {
                 gameTime++
                 timer.text = String.format("%03d", gameTime)
@@ -66,15 +63,13 @@ class MainActivity : AppCompatActivity() {
             newGame()
         }
         button.setOnLongClickListener {
-            finish()
+            finish() //close activity, return to title screen
             true
         }
 
         newGame()
-
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private fun newGame(){
 
         //regenerate game board
@@ -112,11 +107,11 @@ class MainActivity : AppCompatActivity() {
                     imageArray[row][col].setImageResource(R.drawable.button) //set image
                 imageArray[row][col].layoutParams = ViewGroup.LayoutParams(112, 112)
 
-                imageArray[row][col].setOnClickListener{
+                imageArray[row][col].setOnClickListener{//short tap
                     revealCell(row,col)
                 }
 
-                imageArray[row][col].setOnLongClickListener{
+                imageArray[row][col].setOnLongClickListener{//tap and hold
                     flagCell(row,col)
                     true
                 }
@@ -150,7 +145,7 @@ class MainActivity : AppCompatActivity() {
                 imageArray[row][col].setImageResource(R.drawable.button)
             }
         }
-        mineCounter.text = "${gm.mineDisplayCount}"
+        mineCounter.text = "${gm.mineDisplayCount}" //update remaining mines display
     }
 
 
@@ -183,14 +178,11 @@ class MainActivity : AppCompatActivity() {
         gm.remainingCells.remove(thisCell)
 
         if(gm.remainingCells.isEmpty()){
-            println("Game end?")
             endGame(true)
         }
 
         if(thisCell.adjacentMines == 0)
             revealAdjacent(row,col)
-
-        return
     }
 
     private fun revealAdjacent(row: Int, col: Int) {
@@ -206,7 +198,6 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    @SuppressLint("ResourceAsColor")
     private fun endGame(victory: Boolean) {
         executor.shutdown()
 
@@ -214,7 +205,7 @@ class MainActivity : AppCompatActivity() {
             val endDialog = AlertDialog.Builder(this,R.style.AlertDialogTitle)
             endDialog.setTitle(R.string.victory)
             val messageContent = TextView(ContextThemeWrapper(this,R.style.AlertDialogContent))
-            messageContent.text = String.format(getString(R.string.endText),gm.rows,gm.cols,gm.mineCount/60,gm.mineCount%60,gameTime)
+            messageContent.text = String.format(getString(R.string.endText),gm.rows,gm.cols,gm.mineCount,gameTime/60,gameTime%60)
             endDialog.setView(messageContent)
             endDialog.setPositiveButton(R.string.new_game){
                 dialog, _ ->

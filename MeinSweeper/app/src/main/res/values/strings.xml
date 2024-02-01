@@ -11,9 +11,9 @@
     <string name="victory">Victory!</string>
     <string name="difficulty">Difficulty</string>
     <string name="menu">Menu</string>
-    <string name="endText">Grid size: %dx%d\nMine count: %d:%02d\nTime: %d</string>
+    <string name="endText">Grid size: %dx%d\nMine count: %d\nTime: %d:%02d</string>
     <string name="ok">OK</string>
-    <string name="helpText">Reveal every empty cell to win!\n\nTap -> Reveal tile\nHold -> Flag tile\nHold on a revealed tile -> Reveal adjacent tiles\n\nTap on the mine button to start a new game!\nTap and hold on the mine button to return to the start page!\n\nOn harder difficulties you can drag the screen to scroll!</string>
+    <string name="helpText">Reveal every empty cell to win!\n\nTap -> Reveal tile\nHold -> Flag/Unflag tile\nHold on a revealed tile -> Reveal adjacent tiles\n\nTap on the mine button to start a new game!\n\nTap and hold on the mine button to return to the start page!\n\nOn harder difficulties you can drag the screen to scroll!</string>
     <string name="help">Help</string>
     <string name="qmark">\?</string>
 </resources>

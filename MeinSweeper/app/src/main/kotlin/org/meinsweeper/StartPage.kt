@@ -12,7 +12,7 @@ class StartPage : AppCompatActivity(){
 
     private val easyGame : IntArray = intArrayOf(9,9,10)
     private val medGame : IntArray = intArrayOf(16,16,40)
-    private val expertGame : IntArray = intArrayOf(30,16,99)
+    private val expertGame : IntArray = intArrayOf(16,30,99)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,20 +21,20 @@ class StartPage : AppCompatActivity(){
     }
     fun newGameEasy(view: View) {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("gameSettings",easyGame)
+        intent.putExtra("gameSettings",easyGame)    //{9,9,10}}
 
         startActivity(intent)
     }
 
     fun newGameMed(view: View) {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("gameSettings",medGame)
+        intent.putExtra("gameSettings",medGame)     //{16,16,40}
 
         startActivity(intent)
     }
     fun newGameExpert(view: View) {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("gameSettings", expertGame)
+        intent.putExtra("gameSettings", expertGame) //{16,30,99}
 
         startActivity(intent)
     }
